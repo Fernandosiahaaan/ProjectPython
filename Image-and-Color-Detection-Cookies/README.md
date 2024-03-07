@@ -12,7 +12,7 @@ This Repo describe about to embed a script python to `Raspberry` get a analyst o
     pip install -r requirements.txt 
     ```
 
-- Download Models of Cookies Image Detection in this [URL]{'https://drive.google.com/file/d/1Ow20L-KNVrUGfal7pWSUOk6jcIgaTVVV/view?usp=sharing'}. and copy the models to folder `/Camera-Detection-Cookies/models/`
+- Download Models of Cookies Image Detection in this [URL]('https://drive.google.com/file/d/1Ow20L-KNVrUGfal7pWSUOk6jcIgaTVVV/view?usp=sharing'). and copy the models to folder `/Camera-Detection-Cookies/models/`
 
 
 ## Start The Project
