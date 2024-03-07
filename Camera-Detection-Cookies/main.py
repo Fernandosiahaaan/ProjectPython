@@ -27,14 +27,14 @@ max_level3 = np.array([29, 255, 255])
 # Thingspeak API
 myAPI = "7WGQ07PKRINCC1E6"  # Kunci API
 baseURL = (
-    "https://api.thingspeak.com/update?api_key=%s" % myAPI
-)  # URL API  Thingspeak.com
+    f"https://api.thingspeak.com/update?api_key={myAPI}"  # URL API  Thingspeak.com
+)
 level = 1
 
 
 while True:
     try:
-        module.send_serial_data()
+        module.send_serial_data(baseURL)
     except Exception as failed_read_serial:
         print(
             f"Failed Send Data Sensor to Thingspeak Server; exception = {failed_read_serial}"
