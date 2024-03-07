@@ -1,5 +1,6 @@
 from serial import Serial as uart
 import cv2
+from urllib import request as req
 
 
 def pega_centro(x, y, w, h):
@@ -10,7 +11,7 @@ def pega_centro(x, y, w, h):
     return cx, cy
 
 
-def send_serial_data():
+def send_serial_data(URL):
     ser = uart("/dev/ttyACM0", 9600, timeout=1)
     ser.flush()
     if ser.in_waiting > 0:
@@ -21,9 +22,7 @@ def send_serial_data():
         print("kelembaban =", kelembaban)
 
         # Send data to thingspeak:
-        conn = urllib.request.urlopen(
-            baseURL + "&field1=%s&field2=%s" % (suhu, kelembaban)
-        )
+        conn = req.urlopen(URL + "&field1=%s&field2=%s" % (suhu, kelembaban))
         conn.close()  # Disconnect connection
 
 
