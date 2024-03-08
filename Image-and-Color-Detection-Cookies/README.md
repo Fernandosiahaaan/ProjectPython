@@ -4,6 +4,13 @@
 
 This Repo describe about to embed a script python to `Raspberry` get a analyst of maturity cookies based on color or image. The color detection using HSV standart and the image detection using the YoloV3 detection.
 
+## Features
+
+List of features : 
+- YoloV3 Image detection
+- HSV Color detection
+- Seraial Data Sensor From Arduino
+
 ## Presetup 
 
 - install the requirements of module
@@ -19,8 +26,10 @@ This Repo describe about to embed a script python to `Raspberry` get a analyst o
 
 - Run program python 
     ```
-    cd Camera-Detection-Cookies
-    python main.py 
+    cd Image-and-Color-Detection-Cookies
+    python detection_color_cookies              # python script for detection color study cases of cookies
+    python detection_image_cookies              # python script for detection image study cases of cookies
+    python detection_color_and_image_cookies    # python script for detection color & image study cases of cookies
     ```
 - Check result of detection in folder `/Camera-Detection-Cookies/images/`
 

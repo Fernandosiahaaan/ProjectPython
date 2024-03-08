@@ -2,17 +2,15 @@ import cv2
 import numpy as np
 import module_project as module
 
-# file name of image
-filename_level1 = "level_1_of_Maturity"
-filename_level2 = "level_2_of_Maturity"
-filename_level3 = "level_3_of_Maturity"
-
 # Array of data images
 result_image = []
 result_image1 = []
 result_image2 = []
-class_ids = []
-confidences = []
+
+# file name of image
+filename_level1 = "level_1_of_Maturity"
+filename_level2 = "level_2_of_Maturity"
+filename_level3 = "level_3_of_Maturity"
 
 # Range Max & Min in Level 1
 min_level1 = np.array([15, 0, 0])
@@ -26,11 +24,6 @@ max_level2 = np.array([23, 255, 255])
 min_level3 = np.array([26, 40, 40])
 max_level3 = np.array([29, 255, 255])
 
-# file models detection image
-file_models_training = "models/yolov3_training_last.weights"
-file_models_config = "models/yolov3_testing.cfg"
-file_models_class = "models/classes.txt"
-
 # Thingspeak API
 myAPI = "7WGQ07PKRINCC1E6"  # Kunci API
 baseURL = (
@@ -38,20 +31,14 @@ baseURL = (
 )
 
 if __name__ == "__main__":
-    # Set Image Detection YoloV3
-    net = cv2.dnn.readNet(file_models_training, file_models_config)
-    classes = []
-    with open(file_models_class, "r") as f:
-        classes = f.read().splitlines()
-
     streaming_camera = cv2.VideoCapture(0)
     while True:
-        # try:
-        #     module.send_serial_data(baseURL)
-        # except Exception as failed_read_serial:
-        #     print(
-        #         f"Failed Send Data Sensor to Thingspeak Server; exception = {failed_read_serial}"
-        #     )
+        try:
+            module.send_serial_data(baseURL)
+        except Exception as failed_read_serial:
+            print(
+                f"Failed Send Data Sensor to Thingspeak Server; exception = {failed_read_serial}"
+            )
         _, frame = streaming_camera.read()
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
@@ -80,24 +67,6 @@ if __name__ == "__main__":
         )
         module.process_contours(
             frame, contours_level2, mask_level3, result_image2, filename_level3
-        )
-
-        # detect cookies from model
-        index, confidences, class_ids, line_x, line_y, line_w, line_h = (
-            module.detect_image_cookies(frame, net)
-        )
-        print(f"class_ids = {class_ids}; index = {index}")
-        # for i in str(rectangle_maturity):
-        module.validate_image(
-            frame,
-            index,
-            classes,
-            class_ids,
-            confidences,
-            line_x,
-            line_y,
-            line_w,
-            line_h,
         )
 
         # Create Frame and Visualization
