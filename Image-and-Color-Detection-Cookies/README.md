@@ -2,14 +2,14 @@
 
 ## Description
 
-This Repo describe about to embed a script python to `Raspberry` get a analyst of maturity cookies based on color or image. The color detection using HSV standart and the image detection using the YoloV3 detection.
+This Repo describe about to embedd a script python to `Raspberry` get a analyst of maturity cookies based on color or image. The color detection using HSV standart and the image detection using the YoloV3 detection.
 
 ## Features
 
 List of features : 
 - YoloV3 Image detection
 - HSV Color detection
-- Seraial Data Sensor From Arduino
+- Serial Data Sensor From Arduino
 
 ## Presetup 
 
